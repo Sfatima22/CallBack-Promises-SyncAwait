@@ -1,15 +1,14 @@
 var ans = new Promise((resolve, reject) => {
-    let n = 2;
-    if (n<5) {
-        return resolve();
-    } else {
-        return reject();
-    }
+    resolve("donee");
 });
+
 ans
-.then(function () {
-    console.log("resolved");
+.then(function (data) {
+    console.log(data);              // donee
+    return new Promise((resolve, reject) => {
+        resolve("donee2");
+    });
 })
-.catch(function () {
-    console.log("rejected");
+.then(function (data2) {
+    console.log(data2);             // donee2
 });
